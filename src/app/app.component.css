@@ -295,7 +295,7 @@
 
     .card-container > *:not(.circle-link) ,
     .terminal {
-      width: 100%;
+      width: 80%;
     }
 
     .card:not(.highlight-card) {

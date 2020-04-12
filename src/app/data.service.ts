@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
-import { BarChartObj, CountryLevelObj } from './interfaces';
+import { BarChartObj, CountryLevelObj, ConsolidateDataObj} from './interfaces';
 import { StateLevelData } from "./mock-data";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs'
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  private getStateLevelDataUrl = 'http://localhost:8000/api/getstateLevelData/';
-  private getCountryLevelDataUrl = 'http://localhost:8000/api/getCountryLevelData/?country=India'; 
+  protected apiServer = '';
+  private getStateLevelDataUrl = this.apiServer +'/api/getstateLevelData/';
+  private getCountryLevelDataUrl = this.apiServer +'/api/getCountryLevelData/?country=India';
+  private getDistrictLevelDataUrl = this.apiServer + '/api/getDistrictLevelData/?state=Maharashtra';
+  private getIndiaConsolidatedDataUrl = this.apiServer + '/api/getConsolidatedData/?view=India';
 
   constructor(private http: HttpClient) { }
 
@@ -23,4 +27,17 @@ export class DataService {
     //return of(StateLevelData)
     return this.http.get<CountryLevelObj[]>(this.getCountryLevelDataUrl)
   }
+
+  getDistrictLevelData() : Observable<BarChartObj[]>  {
+    //return of(StateLevelData)
+    return this.http.get<BarChartObj[]>(this.getDistrictLevelDataUrl)
+  }
+
+
+  getIndiaConsolidatedData() : Observable<ConsolidateDataObj>  {
+    //return of(StateLevelData)
+    return this.http.get<ConsolidateDataObj>(this.getIndiaConsolidatedDataUrl)
+  }
+
+  
 }

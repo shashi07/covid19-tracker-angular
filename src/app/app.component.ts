@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from "./data.service"
-import {CountryLevelObj} from "./interfaces"
+import {ConsolidateDataObj} from "./interfaces"
 
 @Component({
   selector: 'app-root',
@@ -25,17 +25,34 @@ export class AppComponent implements OnInit  {
   yAxisLabel = 'Confirmed Cases';
   timeline = true;
   single: any[] = []
+  mhDistricts : any[] = []
   countryMedian : any[] = []
   growthFactor : any[] =[]
+  consolidatedData : ConsolidateDataObj = null;
+  isLoaded : boolean = false
+
   ngOnInit() {
+      this.getIndiaConsolidatedData()
       this.getStateLevelData()
       this.getCountryLevelData()
+      this.getDistrictLevelData()
   }
 
 
 getStateLevelData() : void {
  this.dataService.getStateLevelData().subscribe(data => {this.single = data});
 }
+
+getDistrictLevelData() : void {
+  this.dataService.getDistrictLevelData().subscribe(data => {this.mhDistricts = data});
+ }
+
+getIndiaConsolidatedData() : void {
+  this.dataService.getIndiaConsolidatedData().subscribe(data => {
+    this.consolidatedData = data
+    this.isLoaded = true
+  });
+ }
 
 getCountryLevelData() : void {
   this.dataService.getCountryLevelData().subscribe(data => {

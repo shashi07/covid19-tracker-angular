@@ -17,13 +17,13 @@
 
 <div class="content">
 
-  <div class="flex-container container" fxLayout="row" fxLayoutAlign="space-around">
+  <div class="flex-container container" fxLayout="row" fxLayoutAlign="space-around" *ngIf="isLoaded">
     <mat-card class="chip-card">
       <mat-card-header>
         <mat-card-title>Confirmed</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-       <p>7000</p>
+       <p>{{consolidatedData.confirmed_cases}}</p>
       </mat-card-content>
     </mat-card>
 
@@ -32,7 +32,7 @@
         <mat-card-title>Cured</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-       <p>500</p>
+       <p>{{consolidatedData.recovered}}</p>
       </mat-card-content>
     </mat-card>
 
@@ -41,7 +41,7 @@
         <mat-card-title>Deaths</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-       <p>150</p>
+       <p>{{consolidatedData.deaths}}</p>
       </mat-card-content>
     </mat-card>
   </div>
@@ -117,21 +117,21 @@
 
   <mat-card class="example-card">
     <mat-card-header>
-      <mat-card-title>Country median</mat-card-title>
+      <mat-card-title>Maharashtra Districts</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
       <ngx-charts-bar-vertical
                 [view]="view"
-                [results]="countryMedian"
+                [results]="mhDistricts"
                 [gradient]="gradient"
                 [xAxis]="showXAxis"
                 [yAxis]="showYAxis"
                 [legend]="showLegend"
                 [showXAxisLabel]="showXAxisLabel"
                 [showYAxisLabel]="showYAxisLabel"
-                xAxisLabel="Date"
-                yAxisLabel="Moving Median of 5 days">
+                xAxisLabel="Districts"
+                yAxisLabel="Cases">
                 </ngx-charts-bar-vertical>
     </mat-card-content>
   </mat-card>
