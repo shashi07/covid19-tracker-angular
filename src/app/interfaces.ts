@@ -23,3 +23,27 @@ export interface ConsolidateDataObj {
     recovered : number,
     as_of_date : string
    };
+
+
+export interface ComparisionObj {
+    variable: string;
+    world: string;
+    india: string;
+    maharashtra: string;
+  }
+
+  export interface StateWiseComparisionObj {
+    state : string,
+    cases : number,
+    deaths : number,
+    mortality : number,
+    as_of_date : string
+   };
+
+   export interface AgeWiseComparisionObj {
+    age_group : string,
+    cases : number,
+    deaths : number,
+    mortality : number,
+    as_of_date : string
+   };

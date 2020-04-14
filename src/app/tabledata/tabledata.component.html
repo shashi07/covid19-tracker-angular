@@ -1,0 +1,89 @@
+<div class="content">
+
+    <h2 class="header">Comparision of Cases and Death</h2>
+
+    <table mat-table [dataSource]="comparisionData" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="variable">
+          <th mat-header-cell *matHeaderCellDef> Variables </th>
+          <td mat-cell *matCellDef="let element"> {{element.variable}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="world">
+          <th mat-header-cell *matHeaderCellDef> World </th>
+          <td mat-cell *matCellDef="let element"> {{element.world}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="india">
+          <th mat-header-cell *matHeaderCellDef> India </th>
+          <td mat-cell *matCellDef="let element"> {{element.india}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="maharashtra">
+          <th mat-header-cell *matHeaderCellDef> Maharashtra </th>
+          <td mat-cell *matCellDef="let element"> {{element.maharashtra}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="comparisionCols"></tr>
+        <tr mat-row *matRowDef="let row; columns: comparisionCols;"></tr>
+      </table>
+
+
+      <h2 class="header">Statewise Diatribution of Cases &amp; Deaths</h2>
+    
+      <table mat-table [dataSource]="stateComparisonData" class="mat-elevation-z8">
+  
+          <ng-container matColumnDef="state">
+            <th mat-header-cell *matHeaderCellDef> State </th>
+            <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="cases">
+            <th mat-header-cell *matHeaderCellDef> Cases </th>
+            <td mat-cell *matCellDef="let element"> {{element.cases}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="deaths">
+            <th mat-header-cell *matHeaderCellDef> Deaths </th>
+            <td mat-cell *matCellDef="let element"> {{element.deaths}} </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="mortality">
+            <th mat-header-cell *matHeaderCellDef> Mortality </th>
+            <td mat-cell *matCellDef="let element"> {{element.mortality}} </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="stateLevelCols"></tr>
+          <tr mat-row *matRowDef="let row; columns: stateLevelCols;"></tr>
+        </table>
+
+
+        <h2 class="header">Age wise distribution of cases and deaths</h2>
+    
+        <table mat-table [dataSource]="ageWiseData" class="mat-elevation-z8">
+    
+            <ng-container matColumnDef="age_group">
+              <th mat-header-cell *matHeaderCellDef> State </th>
+              <td mat-cell *matCellDef="let element"> {{element.age_group}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="cases">
+              <th mat-header-cell *matHeaderCellDef> Cases </th>
+              <td mat-cell *matCellDef="let element"> {{element.cases}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="deaths">
+              <th mat-header-cell *matHeaderCellDef> Deaths </th>
+              <td mat-cell *matCellDef="let element"> {{element.deaths}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="mortality">
+              <th mat-header-cell *matHeaderCellDef> Mortality </th>
+              <td mat-cell *matCellDef="let element"> {{element.mortality}} </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="ageWiseCols"></tr>
+            <tr mat-row *matRowDef="let row; columns: ageWiseCols;"></tr>
+          </table>
+
+</div>

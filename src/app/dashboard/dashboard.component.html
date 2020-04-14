@@ -1,0 +1,177 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <span>Covid 19 Tracker</span>
+      <div class="spacer"></div>
+  </div>
+  
+  <div class="content">
+  
+    <div class="flex-container container" fxLayout="row" fxLayoutAlign="space-around" *ngIf="isLoaded">
+      <mat-card class="chip-card">
+        <mat-card-header>
+          <mat-card-title>Confirmed</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+         <p>{{consolidatedData.confirmed_cases}}</p>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card class="chip-card">
+        <mat-card-header>
+          <mat-card-title>Cured</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+         <p>{{consolidatedData.recovered}}</p>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card class="chip-card">
+        <mat-card-header>
+          <mat-card-title>Deaths</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+         <p>{{consolidatedData.deaths}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+  <div class="flex-container" fxLayout="column" fxLayoutGap="15px grid" fxLayoutAlign="space-evenly"> 
+        <div class="flex-container container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-evenly">
+  
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>Covid 19 Confirmed Cases</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
+            <ngx-charts-bar-vertical
+                      [view]="view"
+                      [results]="single"
+                      [gradient]="gradient"
+                      [xAxis]="showXAxis"
+                      [yAxis]="showYAxis"
+                      [legend]="showLegend"
+                      [showXAxisLabel]="showXAxisLabel"
+                      [showYAxisLabel]="showYAxisLabel"
+                      [xAxisLabel]="xAxisLabel"
+                      [yAxisLabel]="yAxisLabel">
+                      </ngx-charts-bar-vertical>
+          </mat-card-content>
+        </mat-card>
+  
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>Country median</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
+            <ngx-charts-bar-vertical
+                      [view]="view"
+                      [results]="countryMedian"
+                      [gradient]="gradient"
+                      [xAxis]="showXAxis"
+                      [yAxis]="showYAxis"
+                      [legend]="showLegend"
+                      [showXAxisLabel]="showXAxisLabel"
+                      [showYAxisLabel]="showYAxisLabel"
+                      xAxisLabel="Date"
+                      yAxisLabel="Moving Median of 5 days">
+                      </ngx-charts-bar-vertical>
+          </mat-card-content>
+        </mat-card>
+  
+        </div>
+  
+  <div fxLayout="row" fxLayout.xs="column" >
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Growth Rate</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+         <!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
+         <ngx-charts-line-chart
+                  [view]="view"
+                  [results]="growthFactor"
+                  [gradient]="gradient"
+                  [xAxis]="showXAxis"
+                  [yAxis]="showYAxis"
+                  [legend]="showLegend"
+                  [showXAxisLabel]="showXAxisLabel"
+                  [showYAxisLabel]="showYAxisLabel"
+                  xAxisLabel="Date"
+                  yAxisLabel="Growth Factor">
+                  </ngx-charts-line-chart>
+      </mat-card-content>
+    </mat-card>
+  
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Maharashtra Districts</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
+        <ngx-charts-bar-vertical
+                  [view]="view"
+                  [results]="mhDistricts"
+                  [gradient]="gradient"
+                  [xAxis]="showXAxis"
+                  [yAxis]="showYAxis"
+                  [legend]="showLegend"
+                  [showXAxisLabel]="showXAxisLabel"
+                  [showYAxisLabel]="showYAxisLabel"
+                  xAxisLabel="Districts"
+                  yAxisLabel="Cases">
+                  </ngx-charts-bar-vertical>
+      </mat-card-content>
+    </mat-card>
+    </div>
+
+    <div fxLayout="row" fxLayout.xs="column" >
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Age wise distribution of death in Maharashtra</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+           <!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
+           <ngx-charts-bar-vertical-stacked
+           [view]="view"
+           [results]="ageWiseMH"
+           [gradient]="gradient"
+           [customColors]="color"
+           [xAxis]="showXAxis"
+           [yAxis]="showYAxis"
+           [legend]="showLegend"
+           [showXAxisLabel]="showXAxisLabel"
+           [showYAxisLabel]="showYAxisLabel"
+           xAxisLabel="Age Group"
+           yAxisLabel="Cases"></ngx-charts-bar-vertical-stacked>
+        </mat-card-content>
+      </mat-card>
+    
+      </div>
+
+  </div>
+  </div>
+  
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+  <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+  <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+  <!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+  <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+  
+  
+  
+  <router-outlet></router-outlet>

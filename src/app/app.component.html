@@ -17,7 +17,7 @@
 
 <div class="content">
 
-  <div class="flex-container container" fxLayout="row" fxLayoutAlign="space-around" *ngIf="isLoaded">
+  <!-- <div class="flex-container container" fxLayout="row" fxLayoutAlign="space-around" *ngIf="isLoaded">
     <mat-card class="chip-card">
       <mat-card-header>
         <mat-card-title>Confirmed</mat-card-title>
@@ -54,7 +54,6 @@
           <mat-card-title>Covid 19 Confirmed Cases</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
           <ngx-charts-bar-vertical
                     [view]="view"
                     [results]="single"
@@ -75,7 +74,7 @@
           <mat-card-title>Country median</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
+
           <ngx-charts-bar-vertical
                     [view]="view"
                     [results]="countryMedian"
@@ -99,7 +98,6 @@
       <mat-card-title>Growth Rate</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-       <!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
        <ngx-charts-line-chart
                 [view]="view"
                 [results]="growthFactor"
@@ -120,7 +118,7 @@
       <mat-card-title>Maharashtra Districts</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
+
       <ngx-charts-bar-vertical
                 [view]="view"
                 [results]="mhDistricts"
@@ -137,17 +135,8 @@
   </mat-card>
   
   </div>
+</div> -->
+
 </div>
-</div>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-
 
 <router-outlet></router-outlet>
